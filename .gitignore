@@ -1,0 +1,38 @@
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+.pytest_cache/
+.mypy_cache/
+
+# Environments
+.venv/
+venv/
+env/
+conda-env/
+
+# Data and checkpoints
+data/
+output/
+output_*/
+logs/
+checkpoints/
+clip/checkpoints/
+*.pth
+*.pth.tar
+*.pt
+*.ckpt
+*.safetensors
+
+# Experiment artifacts
+resource_usage.json
+tensorboard/
+runs/
+wandb/
+
+# OS / IDE
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/

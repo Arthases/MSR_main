@@ -1,0 +1,47 @@
+# BIOMEDCLIP LoRA Configuration for BUSI Dataset
+# Using Dassl Framework
+
+DATALOADER:
+  TRAIN_X:
+    BATCH_SIZE: 32
+  TEST:
+    BATCH_SIZE: 32
+  NUM_WORKERS: 4
+
+INPUT:
+  SIZE: (224, 224)
+  INTERPOLATION: "bicubic"
+  PIXEL_MEAN: [0.48145466, 0.4578275, 0.40821073]
+  PIXEL_STD: [0.26862954, 0.26130258, 0.27577711]
+  TRANSFORMS: ["random_resized_crop", "normalize"]
+
+OPTIM:
+  NAME: "adamw"
+  LR: 0.0003
+  WEIGHT_DECAY: 0.01
+  MAX_EPOCH: 100
+  LR_SCHEDULER: "cosine"
+  WARMUP_EPOCH: 5
+  WARMUP_TYPE: "linear"
+  WARMUP_MIN_LR: 1e-6
+
+TRAIN:
+  PRINT_FREQ: 50
+  CHECKPOINT_FREQ: 10
+
+TEST:
+  SPLIT: "test"
+  FINAL_MODEL: "best_val"
+
+MODEL:
+  BACKBONE:
+    NAME: "ViT-B/16"
+
+TRAINER:
+  BIOMEDCLIP_LORA:
+    PREC: "amp"  # "fp32", "fp16", or "amp"
+    LORA:
+      RANK: 3
+      ALPHA: 3.0
+      LAYER_IDXS: [3, 6, 9]
+      DROPOUT: 0.1
