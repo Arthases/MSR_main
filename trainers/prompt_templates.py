@@ -1,4 +1,4 @@
-# source: https://github.com/openai/CLIP/blob/main/notebooks/Prompt_Engineering_for_ImageNet.ipynb
+# ImageNet and medical image text prompt templates.
 
 CUSTOM_TEMPLATES = {
     "BUSI": "a photo of a {}.",
