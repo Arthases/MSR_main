@@ -3,10 +3,10 @@
 
 # =============================================================================
 # MSR_BiomedCLIP Training Script
-# Improved Multimodal Semantic Reconstruction with:
-#   - Token-Level Prompt Coupling (MaPLE-style)
-#   - Multi-Level Feature Aggregation (MFVT-inspired)
-#   - Enhanced SR Loss with Contrastive Alignment
+# Multimodal Semantic Reconstruction with:
+#   - Text-to-visual prompt coupling
+#   - Weighted multi-level CLS feature aggregation
+#   - MSE alignment and in-batch contrastive loss
 # =============================================================================
 
 # Usage:
@@ -29,7 +29,7 @@ else
 fi
 
 echo "========================================================================"
-echo "  MSR_BiomedCLIP: Improved Multimodal Semantic Reconstruction"
+echo "  MSR_BiomedCLIP: Multimodal Semantic Reconstruction"
 echo "========================================================================"
 echo "  Data Root : $DATA_ROOT"
 echo "  Datasets  : ${DATASETS[*]}"
