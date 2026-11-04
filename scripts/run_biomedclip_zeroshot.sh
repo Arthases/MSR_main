@@ -24,7 +24,7 @@ DATASET=${2:-"all"}
 PROMPT_MODE=${3:-"custom"}
 TRAINER="BiomedCLIP_ZeroShot"
 
-# 缁撴灉鏀堕泦
+# Collect evaluation results.
 LOG_DIR="logs/BiomedCLIP_PEFT_ZeroShot/${PROMPT_MODE}"
 RESULT_FILE="BiomedCLIP_PEFT_ZeroShot_${PROMPT_MODE}_缁撴灉.txt"
 mkdir -p "${LOG_DIR}"
@@ -56,7 +56,7 @@ TOTAL_JOBS=0
 SKIP_JOBS=0
 FAIL_JOBS=0
 
-# 瀛樺偍鎵€鏈夌粨鏋? RESULTS[鏁版嵁闆哴="acc f1"
+# Store accuracy and Macro F1 by dataset.
 declare -A RESULTS
 
 for ds in "${DATASETS[@]}"; do
@@ -97,7 +97,7 @@ for ds in "${DATASETS[@]}"; do
 
     TRAIN_EXIT=${PIPESTATUS[0]}
 
-    # 浠庢棩蹇椾腑瑙ｆ瀽 accuracy 鍜?macro_f1
+    # Parse accuracy and Macro F1 from the evaluation log.
     read -r ACC F1 <<< $(python3 -c "
 import re
 try:
@@ -130,7 +130,7 @@ print('N/A N/A')
     echo ""
 done
 
-# 鈹€鈹€ 鍐欏叆缁撴灉鏂囦欢 鈹€鈹€
+# Write the collected results to a text file.
 {
     echo "========================================================================"
     echo "  BiomedCLIP_PEFT Zero-Shot Evaluation (${PROMPT_MODE})"
